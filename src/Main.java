@@ -327,7 +327,186 @@ public class Main {
 		}
 		return count;
 	}
+		// exercise 12
 
+		public static void showSongsDiscxLetterAE(Disco[] disc) {
+			for (int i = 0; i < disc.length; i++) {
+				if (disc[i].getTitulo().startsWith("E") || disc[i].getTitulo().startsWith("A")) {
+					for (int j = 0; j < disc[i].getCanciones().length; j++) {
+						System.out.println((j + 1) + disc[i].getCanciones()[j].getDuracion());
+					}
+				}
+			}
+		}
+	
+		// exercise 13
+	
+		public static void cleanSongsDisc(Disco[] disc, String name) {
+			for (int i = 0; i < disc.length; i++) {
+				if (disc[i].getTitulo().equalsIgnoreCase(name)) {
+					disc[i].setCanciones(null);
+				}
+			}
+	
+		}
+	
+		// exercise 15
+	
+		public static void ShowRecopilatorio(DiscoRecopilatorio[] disc) {
+			for (int i = 0; i < disc.length; i++) {
+				System.out.print("Título " + (i + 1) + " : " + disc[i].getTitulo() + " - ");
+			}
+		}
+	
+		// exercise 16
+	
+		public static void recoMoreDurationSong(DiscoRecopilatorio[] reco) {
+	
+			double duration = 0;
+			double acu = 0;
+			int index = 0;
+	
+			for (int i = 0; i < reco.length; i++) {
+				for (int j = 0; j < reco[i].getDisco().length; j++) {
+					duration = 0;
+					for (int q = 0; q < reco[i].getDisco()[j].getCanciones().length; q++) {
+						acu += reco[i].getDisco()[j].getCanciones()[q].getDuracion();
+	
+					}
+	
+					if (duration < acu) {
+						duration = acu;
+						index = i;
+					}
+				}
+			}
+			// System.out.println(index);
+			reco[index].show();
+		}
+	
+		// exercise 17
+	
+		public static void recolowerDurationSong(DiscoRecopilatorio[] reco) {
+	
+			double duration = 10000;
+			double acu = 0;
+			int index = 0;
+	
+			for (int i = 0; i < reco.length; i++) {
+				for (int j = 0; j < reco[i].getDisco().length; j++) {
+					duration = 0;
+					for (int q = 0; q < reco[i].getDisco()[j].getCanciones().length; q++) {
+						acu += reco[i].getDisco()[j].getCanciones()[q].getDuracion();
+	
+					}
+	
+					if (duration > acu) {
+						duration = acu;
+						index = i;
+					}
+				}
+			}
+			// System.out.println(index);
+			reco[index].show();
+		}
+	
+		// exercise 18
+	
+		public static void tittleRecoMoreDuration(DiscoRecopilatorio[] reco) {
+			double acu = 0;
+			double duration;
+			int index = 0;
+			int index2=0;
+			DiscoRecopilatorio[] listDisco = new DiscoRecopilatorio[2];
+			for (int i = 0; i < reco.length; i++) {
+				for (int j = 0; j < reco[i].getDisco().length; j++) {
+					duration = 0;
+					for (int q = 0; q < reco[i].getDisco()[j].getCanciones().length; q++) {
+							acu += reco[i].getDisco()[j].getCanciones()[q].getDuracion();
+						
+					}
+	
+					if(duration<acu) {
+						duration = acu;
+						index = i;
+					}
+				}
+			}
+			//System.out.println(index);
+			for (int i = 0; i < reco.length; i++) {
+				for (int j = 0; j < reco[i].getDisco().length; j++) {
+					duration = 0;
+					for (int q = 0; q < reco[i].getDisco()[j].getCanciones().length; q++) {
+							acu += reco[i].getDisco()[j].getCanciones()[q].getDuracion();
+						
+					}
+	
+					if(duration<acu && i!=index) {
+						duration = acu;
+						index2 = i;
+					}
+				}	
+		}
+			reco[index].show();
+			reco[index2].show();
+		}
+		
+		//exercise 19
+		
+		public static void tittleRecoLowerDuration(DiscoRecopilatorio[] reco) {
+			double acu = 0;
+			double duration=1000000000;
+			int index = 0;
+			int index2=0;
+			DiscoRecopilatorio[] listDisco = new DiscoRecopilatorio[2];
+			for (int i = 0; i < reco.length; i++) {
+				for (int j = 0; j < reco[i].getDisco().length; j++) {
+					acu = 0;
+					for (int q = 0; q < reco[i].getDisco()[j].getCanciones().length; q++) {
+							acu += reco[i].getDisco()[j].getCanciones()[q].getDuracion();
+						
+					}
+	
+					if(duration>acu) {
+						duration = acu;
+						index = i;
+					}
+				}
+			}
+			//System.out.println(index);
+			duration=0;
+			for (int i = 0; i < reco.length; i++) {
+				for (int j = 0; j < reco[i].getDisco().length; j++) {
+					acu = 0;
+					for (int q = 0; q < reco[i].getDisco()[j].getCanciones().length; q++) {
+							acu += reco[i].getDisco()[j].getCanciones()[q].getDuracion();
+						
+					}
+	
+					if(duration>acu && i!=index) {
+						duration = acu;
+						index2 = i;
+					}
+				}	
+		}
+			reco[index].show();
+			reco[index2].show();
+		}
+		
+		//exercise20
+		public static void discxProductor (DiscoRecopilatorio[] rec, String nom) {
+			boolean confirm=false;
+			for(int i=0;i<rec.length;i++) {
+				for(int j=0;j<rec[i].getDisco().length;j++) {
+					if(rec[i].getDisco()[j].getProductor().equalsIgnoreCase(nom)) {
+						confirm=true;
+					}
+				}
+				if(confirm==true) {
+					rec[i].show();
+				}
+			}
+		}
 	
 	
 	public static void discRecpano(DiscoRecopilatorio[] rec, int año) {
